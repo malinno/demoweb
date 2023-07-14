@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "QUẢN LÝ THÔNG TIN NGƯỜI DÙNG";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+
+<table id="table-user" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Họ và tên
+            </th>
+            <th>
+                Ngày sinh
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in ViewBag.user)
+        {
+            <tr>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    @item.DateOfBirth
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.Phone
+                </td>
+                <td>
+                    @item.Address
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="fas fa-edit" style="color: #44ff00;"></i>
+                    </a> 
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <i class="fas fa-info-circle" style="color: #00b3ff;"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                        <i class="fas fa-trash-alt" style="color: #f10404;"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
